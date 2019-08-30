@@ -1,10 +1,21 @@
 import React from 'react';
 
+import '../css/shake.css';
+
+
+
 // Inline CSS
 let styles = {
    
     height: '170px',
     width: '170px',
+    margin: '20px'
+
+};
+
+let styleCont = {
+   
+  width: '1000px',
 
 };
 
@@ -12,23 +23,30 @@ let styles = {
 
 class Cards extends React.Component {
 
+  handleClick(){
+    alert("Hey");
+  }
+
     render() {
 
       console.log(this.props.cards);
       let cards = this.props.cards;
 
+      // for(let i=0; i < cards.length; i++){
+      //   console.log(i);     
+      // }
+
       return (
-        <div className="container">
-        <div className="row">
-          <div className="col-sm">
-            
+        <>
+        <button onClick={this.handleClick}>Shake</button>
+        <div className="container" style={styleCont}>
+
       {cards.map((value, index) => {
-        return <img src={cards[index].image} className='img-thumbnail' height='170px' width='170px' style={styles}/>
+        return <img alt={cards[index].name} src={cards[index].image} className='img-thumbnail' style={styles}/>
       })}
                         
-          </div>
-        </div>
       </div>
+      </>
       );
     }
   }

@@ -15,7 +15,7 @@ let styles = {
 class Header extends React.Component {
     render() {
       return (
-        <nav className="navbar" style={styles}>
+        <nav className="navbar fixed-top" style={styles}>
             <div>Clicky Game</div>
             <div>Click an Image to Begin</div>
             <div>Score</div>          

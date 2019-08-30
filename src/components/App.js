@@ -1,62 +1,75 @@
 import React from 'react';
 // import logo from './logo.svg';
-import '../App.css';
+import '../css/App.css';
 
 import Header from "./Header";
 import Instructions from "./Instuctions";
 import Cards from "./Cards";
+import Footer from "./Footer";
 
 let cards = [
   {
-      image: '../images/beth.png',
+    name: 'beth',
+    image: '../images/beth.png',
       isClicked: false
   },
   {
-      image: '../images/birdperson.png',
+    name: 'birdperson', 
+    image: '../images/birdperson.png',
       isClicked: false,
   },
   {
+    name: 'evilmorty',
     image: '../images/evilmorty.png',
     isClicked: false
 },
 {
+  name: 'gianthead',
   image: '../images/gianthead.png',
   isClicked: false
 },
 {
+  name: 'goldenford',
   image: '../images/goldenford.png',
   isClicked: false
 },
 {
+  name: 'jerry',
   image: '../images/jerry.png',
   isClicked: false
 },
 {
+  name: 'jessica',
   image: '../images/jessica.png',
   isClicked: false
 },
 {
+  name: 'meeseeks',
   image: '../images/meeseeks.png',
   isClicked: false
 },
 {
+  name: 'morty',
   image: '../images/morty.png',
   isClicked: false
 },
 {
+  name: 'mr',
   image: '../images/mr.png',
   isClicked: false
 },
 {
+  name: 'rick',
   image: '../images/rick.png',
   isClicked: false
 },
 {
+  name: 'summer',
   image: '../images/summer.png',
   isClicked: false
 },
 ]
-// imgSrc = {cards[0].image}
+
 class App extends React.Component {
   render(){
     return(
@@ -64,6 +77,7 @@ class App extends React.Component {
         <Header />
         <Instructions/>
         <Cards cards={cards}/>
+        <Footer/>
       </div>
     );
   }
