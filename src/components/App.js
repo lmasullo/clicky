@@ -93,7 +93,8 @@ class App extends React.Component {
   state = {
     score: 0,
     topscore: 0,
-    cards,
+    message: 'Click an Image to Begin',
+    arrCards: cards,
   };
 
   // Function to update the Score/Topscore State
@@ -108,7 +109,7 @@ class App extends React.Component {
     score = scores.score;
     topscore = scores.topscore;
 
-    // Set new score
+    // Set new score state
     this.setState({
       score,
       topscore,
@@ -118,31 +119,19 @@ class App extends React.Component {
   // Function to update the isClicked on the card object
   updateClicked = clicked => {
     console.log('Update Clicked');
-    // Take a copy
-    // const cards = { ...this.state.cards };
-
-    console.log(typeof cards);
-
-    // const filteredCard = cards.filter(i => i.includes(clicked.id));
-
-    // const filteredCard = cards.filter(clicked.id);
     console.log(`Clicked ID: ${clicked.id}`);
 
-    // console.log(typeof clicked.id);
-
+    // Convert id to an integer
     const intClicked = parseInt(clicked.id);
 
-    // Add new value
-
-    // Loop through array
+    // Loop through array of cards
     // Filter card to the clicked id
-
     for (let i = 0; i < cards.length; i++) {
       console.log(cards[i]);
       if (cards[i].id === intClicked) {
         console.log('Match in for loop');
 
-        // Take a copy
+        // Take a copy of state
         const cards = { ...this.state.cards };
 
         // Set value
@@ -152,28 +141,43 @@ class App extends React.Component {
         this.setState({ cards });
       }
     }
+  };
 
-    // Object.keys(cards).forEach(key => {
-    //   if (cards[key].id === intClicked) {
-    //     console.log('Match');
+  resetClicked = reset => {
+    console.log('Reset');
+    // Loop through array of cards
+    for (let i = 0; i < cards.length; i++) {
+      cards[i].isClicked = false;
+    }
+  };
 
-    //     console.log(cards[key].index);
+  updateMessage = newMessage => {
+    console.log('Update Message');
+    // Take a copy of existing state
+    let message = { ...this.state.message };
 
-    //     console.log(
-    //       `ID: ${cards[key].id}, Index: , Name: ${cards[key].name}, isClicked: ${cards[key].isClicked}`
-    //     );
+    // Change value
+    message = newMessage;
 
-    //     cards[0].isClicked = true;
-    //   }
-    // });
+    // Update State
+    this.setState({ message });
+  };
+
+  shuffle = shuffleArray => {
+    console.log('Shuffle Array');
+
+    // Shuffle the Array
+    function shuffle(array) {
+      array.sort(() => Math.random() - 0.5);
+    }
+
+    shuffle(cards);
+
+    // Take a copy of state
+    const cardsShuffle = { ...this.state.cards };
 
     // Set state
-    // this.setState({ cards });
-
-    // cards[0].isClicked = clicked;
-    // this.setState({
-    // cards,
-    // });
+    this.setState({ cardsShuffle });
   };
 
   // React Render function
@@ -182,12 +186,20 @@ class App extends React.Component {
     return (
       <div className="App">
         {/* Send state down to child components */}
-        <Header score={this.state.score} topscore={this.state.topscore} />
+        <Header
+          score={this.state.score}
+          topscore={this.state.topscore}
+          message={this.state.message}
+        />
         <Instructions />
         <Cards
-          cards={cards}
+          message={this.state.message}
+          arrCards={this.state.arrCards}
           updateScore={this.updateScore}
           updateClicked={this.updateClicked}
+          resetClicked={this.resetClicked}
+          updateMessage={this.updateMessage}
+          shuffle={this.shuffle}
         />
         <Footer />
       </div>

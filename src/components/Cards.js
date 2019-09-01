@@ -49,28 +49,14 @@ class Cards extends React.Component {
   handleClick = event => {
     console.log(this);
 
-    // Create an empty Ref
-    // const myClick = React.createRef();
-
-    // handleClick(event) {
-    // const newScore = 5;
-    // const topscore = 10;
-
-    // console.log(this);
-
-    // Check if has been clicked
-    // console.log(event.currentTarget.dataset.isclicked);
-
     // Get the id of the image clicked
     const isClickedID = event.currentTarget.id;
 
-    // Get the value of isclicked
+    // Get the value of isclicked from the clicked image
     const isClicked = event.currentTarget.dataset.isclicked;
-    console.log(isClickedID);
-    console.log(isClicked);
+    // console.log(isClickedID);
+    // console.log(isClicked);
     // const isClickedID = event.currentTarget.dataset.id;
-
-    // console.log(isClicked, isClickedID);
 
     // Create the object to hold the response to send to updateClicked
     const clicked = {
@@ -78,40 +64,57 @@ class Cards extends React.Component {
       id: isClickedID,
     };
 
-    // const { isClicked } = this.props;
-    // todo Send the array index this with clicked in an object
     // If not previously clicked, set as clicked, increment score,
     // if score > top score, increment top score, and shuffle
     if (isClicked === 'false') {
       console.log('Its False');
-      //! Set State??
-      // todo make isClicked = true
 
       // Set the response object
       clicked.isClicked = true;
+
+      // Call the updateClicked function in App.js
+      // Pass the id and true for isClicked
       this.props.updateClicked(clicked);
 
+      // Increment the score
       scores.score++;
-      console.log(scores.score);
 
-      if (scores.score >= scores.topscore) {
+      // Check if the score is > topscore
+      if (scores.score > scores.topscore) {
+        // Increment topscore
         scores.topscore++;
         console.log(scores.topscore);
       }
 
       this.props.updateScore(scores);
+
+      // Change the message to Incorrect
+      this.props.updateMessage('You Guessed Correctly!');
     } else {
       // todo If already clicked, shake, and tell incorrect, reset score, leave top score alone
       // Call Shake
       shake();
+
+      // Reset the score
+      scores.score = 0;
+      this.props.updateScore(scores);
+
+      // Reset all the isClicked to false
+      this.props.resetClicked();
+
+      // Change the message to Incorrect
+      this.props.updateMessage('You Guessed Incorrectly!');
     }
+
+    // Shuffle the array
+    // this.props.shuffle();
   };
 
   render() {
-    console.log(this.props.cards);
-
     // Get the cards array from props
-    const { cards } = this.props;
+    // const { cards } = this.props;
+    console.log(this.props.arrCards);
+    const cards = this.props.arrCards;
 
     // Return this App.js
     return (
@@ -126,7 +129,6 @@ class Cards extends React.Component {
               alt={cards[index].name}
               src={cards[index].image}
               data-isclicked={cards[index].isClicked}
-              // ref={cards[index].isClicked}
               className="img-thumbnail"
               style={styles}
               onClick={event => this.handleClick(event)}

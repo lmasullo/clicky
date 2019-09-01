@@ -13,10 +13,11 @@ const styles = {
 
 class Header extends React.Component {
   render() {
+    // console.log(this.props.message);
     return (
       <nav className="navbar fixed-top" style={styles}>
         <div>Clicky Game</div>
-        <div>Click an Image to Begin</div>
+        <div>{this.props.message}</div>
         <div>
           Score: {this.props.score} | Topscore: {this.props.topscore}
         </div>
