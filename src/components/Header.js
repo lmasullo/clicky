@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 // Inline CSS
@@ -6,7 +8,6 @@ const styles = {
   height: '90px',
   color: 'white',
   fontSize: '34px',
-  fontWeight: 'bold',
   paddingLeft: '100px',
   paddingRight: '100px',
 };
@@ -17,7 +18,7 @@ class Header extends React.Component {
     return (
       <nav className="navbar fixed-top" style={styles}>
         <div>Clicky Game</div>
-        <div>{this.props.message}</div>
+        <div id="message">{this.props.message}</div>
         <div>
           Score: {this.props.score} | Topscore: {this.props.topscore}
         </div>

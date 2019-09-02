@@ -8,12 +8,12 @@ import React from 'react';
 
 // Import the Components
 import Header from './Header';
-import Instructions from './Instuctions';
+import Instructions from './Instructions';
 import Cards from './Cards';
 import Footer from './Footer';
 
 // Create the array cards
-const cards = [
+let cards = [
   {
     id: 1,
     name: 'beth',
@@ -118,11 +118,21 @@ class App extends React.Component {
 
   // Function to update the isClicked on the card object
   updateClicked = clicked => {
-    console.log('Update Clicked');
-    console.log(`Clicked ID: ${clicked.id}`);
+    console.log('Update Clicked - App.js');
 
     // Convert id to an integer
     const intClicked = parseInt(clicked.id);
+    console.log(`Clicked Image ID: ${intClicked}`);
+
+    const isClicked = clicked.isClicked;
+    console.log(`Clicked Image Clicked Status: ${isClicked}`);
+
+    // Take a copy of state
+    //! the spread messes things up
+    // cards = { ...this.state.arrCards };
+    cards = this.state.arrCards;
+
+    console.log(this.state.arrCards);
 
     // Loop through array of cards
     // Filter card to the clicked id
@@ -130,9 +140,6 @@ class App extends React.Component {
       console.log(cards[i]);
       if (cards[i].id === intClicked) {
         console.log('Match in for loop');
-
-        // Take a copy of state
-        const cards = { ...this.state.cards };
 
         // Set value
         cards[i].isClicked = true;

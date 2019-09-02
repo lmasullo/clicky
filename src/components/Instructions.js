@@ -2,14 +2,18 @@ import React from 'react';
 
 // Inline CSS
 const styles = {
-  backgroundImage: 'url(../images/background.svg)',
+  // backgroundImage: 'url(../images/background.svg)',
+  backgroundImage: 'url(../images/squares.svg)',
   height: '380px',
   color: 'white',
   display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
 };
 
 const styleCenter = {
-  margin: 'auto',
+  textAlign: 'center',
 };
 
 const styleLarge = {

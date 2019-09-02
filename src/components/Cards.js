@@ -38,6 +38,28 @@ function shake() {
   }, 500);
 }
 
+// Function that adds the correct class to the message for .3 seconds, then removes
+function correct() {
+  const message = document.getElementById('message');
+
+  message.classList.add('correct');
+
+  setTimeout(function() {
+    message.classList.remove('correct');
+  }, 300);
+}
+
+// Function that adds the incorrect class to the message for .3 seconds, then removes
+function incorrect() {
+  const message = document.getElementById('message');
+
+  message.classList.add('incorrect');
+
+  setTimeout(function() {
+    message.classList.remove('incorrect');
+  }, 300);
+}
+
 // Create object to hold the scores to return
 const scores = {
   score: 0,
@@ -47,7 +69,7 @@ const scores = {
 class Cards extends React.Component {
   // Use this syntax so we have access to 'this'
   handleClick = event => {
-    console.log(this);
+    // console.log(this);
 
     // Get the id of the image clicked
     const isClickedID = event.currentTarget.id;
@@ -67,7 +89,7 @@ class Cards extends React.Component {
     // If not previously clicked, set as clicked, increment score,
     // if score > top score, increment top score, and shuffle
     if (isClicked === 'false') {
-      console.log('Its False');
+      console.log('Image Clicked (cards.js) - Clicked status is False');
 
       // Set the response object
       clicked.isClicked = true;
@@ -83,14 +105,18 @@ class Cards extends React.Component {
       if (scores.score > scores.topscore) {
         // Increment topscore
         scores.topscore++;
-        console.log(scores.topscore);
+        // console.log(scores.topscore);
       }
 
       this.props.updateScore(scores);
 
       // Change the message to Incorrect
       this.props.updateMessage('You Guessed Correctly!');
+
+      // Call function that changes message color
+      correct();
     } else {
+      console.log('Image Clicked (cards.js) - Its True');
       // todo If already clicked, shake, and tell incorrect, reset score, leave top score alone
       // Call Shake
       shake();
@@ -104,16 +130,19 @@ class Cards extends React.Component {
 
       // Change the message to Incorrect
       this.props.updateMessage('You Guessed Incorrectly!');
+
+      // Call function that changes message color
+      incorrect();
     }
 
     // Shuffle the array
-    // this.props.shuffle();
+    this.props.shuffle();
   };
 
   render() {
     // Get the cards array from props
     // const { cards } = this.props;
-    console.log(this.props.arrCards);
+    // console.log(this.props.arrCards);
     const cards = this.props.arrCards;
 
     // Return this App.js
