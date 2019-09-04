@@ -6,7 +6,7 @@
 
 Test your memory! Click on a different image each time and try to get all 12!
 
-### Installing
+## Installing
 
 * Clone this repository
 * Run npm init -y
