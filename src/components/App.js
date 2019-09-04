@@ -3,8 +3,6 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable prefer-destructuring */
 import React from 'react';
-// import logo from './logo.svg';
-// import '../css/App.css';
 
 // Import the Components
 import Header from './Header';
@@ -12,7 +10,7 @@ import Instructions from './Instructions';
 import Cards from './Cards';
 import Footer from './Footer';
 
-// Create the array cards
+// Create the array of cards
 let cards = [
   {
     id: 1,
@@ -101,6 +99,7 @@ class App extends React.Component {
   // Use this syntax to get the info from the child component
   updateScore = scores => {
     console.log('Update score');
+
     // Take a copy of existing state
     let score = { ...this.state.score };
     let topscore = { ...this.state.topscore };
@@ -128,7 +127,7 @@ class App extends React.Component {
     console.log(`Clicked Image Clicked Status: ${isClicked}`);
 
     // Take a copy of state
-    //! the spread messes things up
+    //! the spread operator messes things up
     // cards = { ...this.state.arrCards };
     cards = this.state.arrCards;
 
@@ -150,6 +149,7 @@ class App extends React.Component {
     }
   };
 
+  // Set all cards to isClicked = false, starting the game over
   resetClicked = reset => {
     console.log('Reset');
     // Loop through array of cards
@@ -158,6 +158,7 @@ class App extends React.Component {
     }
   };
 
+  // Update the message, Correct or Incorrect
   updateMessage = newMessage => {
     console.log('Update Message');
     // Take a copy of existing state
@@ -170,21 +171,23 @@ class App extends React.Component {
     this.setState({ message });
   };
 
+  // Shuffle the images after each choice
   shuffle = shuffleArray => {
     console.log('Shuffle Array');
 
     // Shuffle the Array
-    function shuffle(array) {
+    function arrShuffle(array) {
       array.sort(() => Math.random() - 0.5);
     }
 
-    shuffle(cards);
-
     // Take a copy of state
-    const cardsShuffle = { ...this.state.cards };
+    const arrCards = this.state.arrCards;
+
+    // Call the above shuffle function
+    arrShuffle(arrCards);
 
     // Set state
-    this.setState({ cardsShuffle });
+    this.setState({ arrCards });
   };
 
   // React Render function
@@ -214,4 +217,5 @@ class App extends React.Component {
   }
 }
 
+// Export the component so it is available to others
 export default App;

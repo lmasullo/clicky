@@ -10,7 +10,6 @@ import React from 'react';
 import '../css/cards.css';
 
 // Inline CSS
-// todo move into cards.css??
 const styles = {
   height: '170px',
   width: '170px',
@@ -30,7 +29,6 @@ function shake() {
   for (let i = 0; i < allImgs.length; i++) {
     allImgs[i].classList.add('shake');
   }
-
   setTimeout(function() {
     for (let i = 0; i < allImgs.length; i++) {
       allImgs[i].classList.remove('shake');
@@ -39,48 +37,55 @@ function shake() {
 }
 
 // Function that adds the correct class to the message for .3 seconds, then removes
+// This changes the color of the message to Green
 function correct() {
   const message = document.getElementById('message');
-
   message.classList.add('correct');
-
   setTimeout(function() {
     message.classList.remove('correct');
   }, 300);
 }
 
 // Function that adds the incorrect class to the message for .3 seconds, then removes
+// This changes the color of the message to Red
 function incorrect() {
   const message = document.getElementById('message');
-
   message.classList.add('incorrect');
-
   setTimeout(function() {
     message.classList.remove('incorrect');
   }, 300);
 }
 
-// Create object to hold the scores to return
+// Function that adds the zoom class to all images for 1 second, then removes
+function zoom() {
+  const allImgs = document.querySelectorAll('.img-thumbnail');
+  for (let i = 0; i < allImgs.length; i++) {
+    allImgs[i].classList.add('zoom');
+  }
+  setTimeout(function() {
+    for (let i = 0; i < allImgs.length; i++) {
+      allImgs[i].classList.remove('zoom');
+    }
+  }, 1000);
+}
+
+// Create object to hold the scores to return to App.js
 const scores = {
   score: 0,
   topscore: 0,
 };
 
+// Cards Component
 class Cards extends React.Component {
   // Use this syntax so we have access to 'this'
   handleClick = event => {
-    // console.log(this);
-
     // Get the id of the image clicked
     const isClickedID = event.currentTarget.id;
 
-    // Get the value of isclicked from the clicked image
+    // Get the value of isclicked from the clicked image, True or False
     const isClicked = event.currentTarget.dataset.isclicked;
-    // console.log(isClickedID);
-    // console.log(isClicked);
-    // const isClickedID = event.currentTarget.dataset.id;
 
-    // Create the object to hold the response to send to updateClicked
+    // Create the object to hold the response to send to updateClicked in App.js
     const clicked = {
       isClicked,
       id: isClickedID,
@@ -108,45 +113,54 @@ class Cards extends React.Component {
         // console.log(scores.topscore);
       }
 
+      // Send scores to updateScore in App.js
       this.props.updateScore(scores);
 
-      // Change the message to Incorrect
+      // Change the message to Correct
       this.props.updateMessage('You Guessed Correctly!');
 
-      // Call function that changes message color
+      // Call function that changes message color to Green
       correct();
+
+      // Check if user got all 12 correct
+      if (scores.score === 12) {
+        console.log('Got all Correct');
+        // Call function that changes message to 'You Win'
+        this.props.updateMessage('You Guessed All Correctly, You Win!!');
+        // Call zoom
+        zoom();
+      }
     } else {
       console.log('Image Clicked (cards.js) - Its True');
-      // todo If already clicked, shake, and tell incorrect, reset score, leave top score alone
+      // If already clicked, shake, and tell incorrect, reset score, leave top score alone
       // Call Shake
       shake();
 
-      // Reset the score
+      // Reset the score, send to updateScore in App.js
       scores.score = 0;
       this.props.updateScore(scores);
 
-      // Reset all the isClicked to false
+      // Reset all the isClicked to false, call the function in App.js
       this.props.resetClicked();
 
-      // Change the message to Incorrect
+      // Change the message to Incorrect, send to updateMessage in App.js
       this.props.updateMessage('You Guessed Incorrectly!');
 
-      // Call function that changes message color
+      // Call function in App.js that changes message color to Red
       incorrect();
     }
 
-    // Shuffle the array
+    // Call the function in App.js that Shuffles the array
     this.props.shuffle();
   };
 
   render() {
     // Get the cards array from props
-    // const { cards } = this.props;
-    // console.log(this.props.arrCards);
     const cards = this.props.arrCards;
 
-    // Return this App.js
+    // Return this to App.js
     return (
+      // Use <> to enclose all the children
       <>
         <div className="container" style={styleCont}>
           {/* Map over the cards arrays */}
@@ -160,6 +174,7 @@ class Cards extends React.Component {
               data-isclicked={cards[index].isClicked}
               className="img-thumbnail"
               style={styles}
+              // Handle the click event when the image is chosen, the function is inside this component
               onClick={event => this.handleClick(event)}
             />
           ))}
@@ -169,4 +184,5 @@ class Cards extends React.Component {
   }
 }
 
+// Export the component so it is available to others
 export default Cards;

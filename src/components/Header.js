@@ -5,16 +5,16 @@ import React from 'react';
 // Inline CSS
 const styles = {
   backgroundColor: '#5133a4',
-  height: '90px',
+  height: '80px',
   color: 'white',
-  fontSize: '34px',
-  paddingLeft: '100px',
-  paddingRight: '100px',
+  fontSize: '28px',
+  paddingLeft: '150px',
+  paddingRight: '70px',
 };
 
+// Header Component with props from App.js
 class Header extends React.Component {
   render() {
-    // console.log(this.props.message);
     return (
       <nav className="navbar fixed-top" style={styles}>
         <div>Clicky Game</div>
@@ -27,4 +27,5 @@ class Header extends React.Component {
   }
 }
 
+// Export the component so it is available to others
 export default Header;
