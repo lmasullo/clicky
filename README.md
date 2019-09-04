@@ -13,6 +13,7 @@ Test your memory! Click on a different image each time and try to get all 12!
 * Run npm install
 
 ## Built With
+
 * This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 * React.js
 * JSX
@@ -20,7 +21,7 @@ Test your memory! Click on a different image each time and try to get all 12!
 * Node.js
 * Bootstrap 4
 
-### NPM Packages
+## NPM Packages
 
 * react  - React.js framework
 * react-dom - React DOM manipulation
