@@ -1,6 +1,6 @@
 # Project Title
 
-**Clicky**
+**Clicky - A React App**
 
 ## Description:
 
