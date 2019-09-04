@@ -11,7 +11,7 @@ import Cards from './Cards';
 import Footer from './Footer';
 
 // Create the array of cards
-let cards = [
+const cards = [
   {
     id: 1,
     name: 'beth',
@@ -129,22 +129,22 @@ class App extends React.Component {
     // Take a copy of state
     //! the spread operator messes things up
     // cards = { ...this.state.arrCards };
-    cards = this.state.arrCards;
+    const arrCards = this.state.arrCards;
 
     console.log(this.state.arrCards);
 
     // Loop through array of cards
     // Filter card to the clicked id
-    for (let i = 0; i < cards.length; i++) {
-      console.log(cards[i]);
-      if (cards[i].id === intClicked) {
+    for (let i = 0; i < arrCards.length; i++) {
+      console.log(arrCards[i]);
+      if (arrCards[i].id === intClicked) {
         console.log('Match in for loop');
 
         // Set value
-        cards[i].isClicked = true;
+        arrCards[i].isClicked = true;
 
         // Set state
-        this.setState({ cards });
+        this.setState({ arrCards });
       }
     }
   };
