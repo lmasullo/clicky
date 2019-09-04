@@ -20,8 +20,6 @@ Test your memory! Click on a different image each time and try to get all 12!
 * Node.js
 * Bootstrap 4
 
-The app uses the following NPM packages: 
-
 ### NPM Packages
 
 * react  - React.js framework
