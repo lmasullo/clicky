@@ -24,20 +24,18 @@ const styleFoot2 = {
 class Footer extends React.Component {
   render() {
     return (
-      <>
-        <footer className="footer fixed-bottom" style={styleFoot}>
-          <div style={styleFoot2}>
-            Clicky Game!
-            <img
-              className="pl-1 pb-1"
-              alt="React Clicky Game"
-              src="../images/react.svg"
-              height="20px"
-              width="20px"
-            ></img>
-          </div>
-        </footer>
-      </>
+      <footer className="footer fixed-bottom" style={styleFoot}>
+        <div style={styleFoot2}>
+          Clicky Game!
+          <img
+            className="pl-1 pb-1"
+            alt="React Clicky Game"
+            src="./images/react.svg"
+            height="20px"
+            width="20px"
+          ></img>
+        </div>
+      </footer>
     );
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 // Inline CSS
 const styles = {
-  backgroundImage: 'url(../images/squares.svg)',
+  backgroundImage: 'url(./images/squares.svg)',
   height: '380px',
   color: 'white',
   display: 'flex',

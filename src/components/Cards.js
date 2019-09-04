@@ -10,13 +10,19 @@ import React from 'react';
 import '../css/cards.css';
 
 // Inline CSS
-const styles = {
+const styleImg = {
   height: '170px',
   width: '170px',
   margin: '20px',
 };
 
 const styleCont = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+};
+
+const styleCont2 = {
   display: 'flex',
   flexWrap: 'wrap',
   width: '1000px',
@@ -160,9 +166,8 @@ class Cards extends React.Component {
 
     // Return this to App.js
     return (
-      // Use <> to enclose all the children
-      <>
-        <div className="container" style={styleCont}>
+      <div style={styleCont}>
+        <div style={styleCont2}>
           {/* Map over the cards arrays */}
           {cards.map((value, index) => (
             // Create the img tags
@@ -173,13 +178,13 @@ class Cards extends React.Component {
               src={cards[index].image}
               data-isclicked={cards[index].isClicked}
               className="img-thumbnail"
-              style={styles}
+              style={styleImg}
               // Handle the click event when the image is chosen, the function is inside this component
               onClick={event => this.handleClick(event)}
             />
           ))}
         </div>
-      </>
+      </div>
     );
   }
 }
