@@ -1,68 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project Title
 
-## Available Scripts
+**Clicky**
 
-In the project directory, you can run:
+## Description:
 
-### `npm start`
+Test your memory! Click on a different image each time and try to get all 12!
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Installing
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+* Clone this repository
+* Run npm init -y
+* Run npm install
 
-### `npm test`
+## Built With
+* This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+* React.js
+* JSX
+* Javascript
+* Node.js
+* Bootstrap 4
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app uses the following NPM packages: 
 
-### `npm run build`
+### NPM Packages
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* react  - React.js framework
+* react-dom - React DOM manipulation
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Instructions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Clone this repository at https://github.com/lmasullo/clicky
+* Run npm install in the terminal
+* Run NPM start
+* Open your browser to localhost:3000
+* You will be presented with the main page
+* Alternately go to https://lmasullo.github.io/clicky/
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![alt text](public/images/clicky.png "Home Page")
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* The goal is to click on each image just once. As you click on an image your score will increment as long as you haven't clicked on it before. Try to get all 12! If you click on an image a second time, the images will shake, and the game will restart.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## GitHub Repo
+https://github.com/lmasullo/clicky
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Versioning
 
-## Learn More
+We use [SemVer](http://semver.org/) for versioning. 
+Current version is 1.0
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Authors
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Larry Masullo (sole author)**
 
-### Code Splitting
+## Portfolio
+https://www.masullodev.com
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## License
 
-### Analyzing the Bundle Size
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Acknowledgments
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Thanks to the Instructors and Teaching Assistants in the UT Full Stack Coding Bootcamp for their support. 
