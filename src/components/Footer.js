@@ -5,6 +5,7 @@ const styleFoot = {
   backgroundColor: '#6956af',
   height: '100px',
   color: 'white',
+  position: 'relative',
 };
 
 const styleFoot2 = {
@@ -24,7 +25,7 @@ const styleFoot2 = {
 class Footer extends React.Component {
   render() {
     return (
-      <footer className="footer fixed-bottom" style={styleFoot}>
+      <footer className="footer" style={styleFoot}>
         <div style={styleFoot2}>
           Clicky Game!
           <img
